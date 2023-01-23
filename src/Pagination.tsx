@@ -1,9 +1,9 @@
-export type DummyProps = {
+export type PaginationProps = {
   children: React.ReactNode
   title: string
 }
 
-const Dummy = (props: DummyProps) => {
+const Pagination = (props: PaginationProps) => {
   const { children, title } = props
 
   return (
@@ -15,4 +15,4 @@ const Dummy = (props: DummyProps) => {
   )
 }
 
-export default Dummy
+export default Pagination

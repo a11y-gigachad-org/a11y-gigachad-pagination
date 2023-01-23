@@ -1,1 +1,1 @@
-export { default as Dummy, type DummyProps } from "./Dummy"
+export { default as Pagination, type PaginationProps } from "./Pagination"
