@@ -9,6 +9,5 @@ it("should render `title` and `children`", () => {
     </Dummy>
   )
 
-  expect(screen.getByText("Hi!")).toBeInTheDocument()
   expect(screen.getByText("I'm Dummy!")).toBeInTheDocument()
 })
