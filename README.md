@@ -14,10 +14,6 @@ npm i a11y-gigachad-pagination --save-dev
 import { Pagination, type PaginationProps } from 'a11y-gigachad-modal'
 ```
 
-## 👀 Example
-
-
-
 ## 💬 Discussions
 
 For any ideas or questions, head over to the [disscussions](https://github.com/a11y-gigachad-org/a11y-gigachad-pagination/discussions) to share them there.
