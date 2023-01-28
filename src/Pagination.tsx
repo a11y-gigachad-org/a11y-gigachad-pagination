@@ -1,55 +1,81 @@
+import { useId } from "react"
+
+import * as S from "./styles"
+
 export type PaginationProps = {
-  totalCount: number
+  total: number
   currentPage: number
-  pageSize: number
-  onPageChange: (page: number) => void
+  limit: number
+  setCurrentPage: (page: number) => void
 }
 
-const Pagination = (props: PaginationProps) => {
-  const { totalCount, currentPage, pageSize, onPageChange } = props
+const Pagination = (props: PaginationProps): JSX.Element => {
+  const { total, currentPage, limit, setCurrentPage } = props
+
+  const id = useId()
+
+  const pageCount = Math.ceil(total / limit)
 
   const onNext = () => {
-    if (currentPage !== Math.ceil(totalCount / pageSize)) {
-      onPageChange(currentPage + 1)
+    if (currentPage !== pageCount) {
+      setCurrentPage(currentPage + 1)
     }
   }
 
   const onPrevious = () => {
     if (currentPage !== 1) {
-      onPageChange(currentPage - 1)
+      setCurrentPage(currentPage - 1)
     }
   }
 
-  const pageNumbers = []
-
-  for (let i = 1; i <= Math.ceil(totalCount / pageSize); i++) {
-    pageNumbers.push(i)
-  }
+  const pageNumbers = Array.from(Array(pageCount + 1).keys()).slice(1)
 
   return (
-    <nav>
-      <ol>
+    <S.Navigation>
+      <p role="status" id={id}>
+        Current page {currentPage} out of {pageCount}
+      </p>
+
+      <S.OrderedList>
         <li>
-          <button type="button" onClick={onPrevious}>
-            Prev
-          </button>
+          <S.Button
+            aria-controls={id}
+            aria-describedby={id}
+            aria-label="go to the previous page"
+            type="button"
+            onClick={onPrevious}
+          >
+            Previous
+          </S.Button>
         </li>
 
         {pageNumbers.map((page) => (
           <li key={page}>
-            <button type="button" onClick={() => onPageChange(page)}>
+            <S.Button
+              aria-label={`go to page ${page}`}
+              aria-controls={id}
+              aria-describedby={id}
+              type="button"
+              onClick={() => setCurrentPage(page)}
+            >
               {page}
-            </button>
+            </S.Button>
           </li>
         ))}
 
         <li>
-          <button type="button" onClick={onNext}>
+          <S.Button
+            aria-controls={id}
+            aria-describedby={id}
+            aria-label="go to the next page"
+            type="button"
+            onClick={onNext}
+          >
             Next
-          </button>
+          </S.Button>
         </li>
-      </ol>
-    </nav>
+      </S.OrderedList>
+    </S.Navigation>
   )
 }
 
