@@ -11,7 +11,7 @@ npm i a11y-gigachad-pagination --save-dev
 ## 📖 Usage
 
 ```
-import { Pagination, type PaginationProps } from 'a11y-gigachad-modal'
+import { Pagination, type PaginationProps } from 'a11y-gigachad-pagination'
 ```
 
 ## 💬 Discussions
